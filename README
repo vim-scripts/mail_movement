@@ -1,0 +1,24 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3182
+
+DESCRIPTION
+This filetype plugin provides movement commands and text objects for email
+quotes. 
+
+USAGE
+			Move around email quotes of a certain nesting level, as
+			determined by the current line; if the cursor is not on
+			a quoted line, any nesting level will be used. 
+]]			Go to [count] next start of an email quote. 
+][			Go to [count] next end of an email quote. 
+[[			Go to [count] previous start of an email quote. 
+[]			Go to [count] previous end of an email quote. 
+
+			Move to nested email quote (i.e. of a higher nesting
+			level as the current line; if the cursor is not on a
+			quoted line, any nesting level will be used). 
+]+			Go to [count] next start of a nested email quote. 
+[+			Go to [count] previous start of a nested email quote. 
+
+aq			"a quote" text object, select [count] email quotes
+iq			"inner quote" text object, select [count] regions with
+			the same quoting level

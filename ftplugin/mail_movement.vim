@@ -9,6 +9,8 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS 
+"   1.52.007	20-Dec-2010	Adapted to CountJump#Region#JumpToNextRegion()
+"				again returning jump position in version 1.40. 
 "   1.51.006	19-Dec-2010	ENH: ][ mapping in operator-pending and visual
 "				mode now also operates over / select the last
 "				line of the quote. This is what the user
@@ -215,16 +217,14 @@ function! s:JumpToQuoteBegin( count, isInner )
 	endif
     endif
 
-    call CountJump#Region#JumpToRegionEnd(a:count, s:MakeQuotePattern(s:quotePrefix, a:isInner), 1, -1, 0)
-    return getpos('.')[1:2]
+    return CountJump#Region#JumpToRegionEnd(a:count, s:MakeQuotePattern(s:quotePrefix, a:isInner), 1, -1, 0)
 endfunction
 function! s:JumpToQuoteEnd( count, isInner )
     if empty(s:quotePrefix)
 	let l:separatorPattern = '^' . s:GetMailSeparatorPattern() . '\@!.*\n' . s:GetMailSeparatorPattern() . '\?From:\s\|\%$'
 	return CountJump#CountSearch(a:count, [l:separatorPattern, 'W'])
     else
-	call CountJump#Region#JumpToRegionEnd(a:count, s:MakeQuotePattern(s:quotePrefix, a:isInner), 1, 1, 0)
-	return getpos('.')[1:2]
+	return CountJump#Region#JumpToRegionEnd(a:count, s:MakeQuotePattern(s:quotePrefix, a:isInner), 1, 1, 0)
     endif
 endfunction
 call CountJump#TextObject#MakeWithJumpFunctions('<buffer>', 'q', 'aI', 'V',

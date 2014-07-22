@@ -5,38 +5,38 @@ This filetype plugin provides movement commands and text objects for email
 quotes.
 
 USAGE
-                        A quoted email is determined either by:
-                        - lines prefixed with ">" (one, or multiple for nested
-                          quotes)
-                        - an optional email separator (e.g.
-                        "-----Original Message-----") and the standard "From: <Name>"
-                        mail header, optionally followed by other header lines.
+A quoted email is determined either by:
+- lines prefixed with ">" (one, or multiple for nested quotes)
+- an optional email separator, e.g.
+-----Original Message-----
+  and the standard
+From: <Name>
+  optionally followed by other header lines.
 
-                        Move around email quotes of either:
-                        - a certain nesting level, as determined by the current
-                          line; if the cursor is not on a quoted line, any
-                          nesting level will be used.
-                        - the range of lines from the "From: <Name>" mail header
-                          up to the line preceding the next email separator or
-                          next mail header.
+Move around email quotes of either:
+- a certain nesting level, as determined by the current line; if the cursor is
+  not on a quoted line, any nesting level will be used.
+- the range of lines from the "From: <Name>" mail header up to the line
+  preceding the next email separator or next mail header.
+
 ]]                      Go to [count] next start of an email quote.
 ][                      Go to [count] next end of an email quote.
 [[                      Go to [count] previous start of an email quote.
 []                      Go to [count] previous end of an email quote.
 
-                        Move to nested email quote (i.e. of a higher nesting
-                        level as the current line; if the cursor is not on a
-                        quoted line, any nesting level will be used).
+Move to nested email quote (i.e. of a higher nesting level as the current
+line; if the cursor is not on a quoted line, any nesting level will be used).
+
 ]+                      Go to [count] next start of a nested email quote.
 [+                      Go to [count] previous start of a nested email quote.
 
 aq                      "a quote" text object, select [count] email quotes, i.e.
                         - contiguous lines having at least the same as the
                           current line's nesting level
-                        - one email message including the preceding mail headers
-                          and optional email separator
+                        - one email message including the preceding mail
+                          headers and optional email separator
 iq                      "inner quote" text object, select [count] regions with
                         either:
                         - the same nesting level
-                        - the contents of an email message without the preceding
-                          mail headers
+                        - the contents of an email message without the
+                          preceding mail headers
